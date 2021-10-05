@@ -449,6 +449,7 @@ WEBHOOK_INTEGRATIONS: List[WebhookIntegration] = [
     WebhookIntegration("rundeck", ["deployment"], display_name="Rundeck"),
     WebhookIntegration("semaphore", ["continuous-integration", "deployment"]),
     WebhookIntegration("sentry", ["monitoring"]),
+    WebhookIntegration("simpleinout", ["misc"], display_name="Simple In/Out",logo="images/integrations/logos/slack.svg"),
     WebhookIntegration(
         "slack_incoming",
         ["communication", "meta-integration"],
@@ -691,6 +692,7 @@ for bot_integration in BOT_INTEGRATIONS:
 NO_SCREENSHOT_WEBHOOKS = {
     "beeminder",  # FIXME: fixture's goal.losedate needs to be modified dynamically
     "ifttt",  # Docs don't have a screenshot
+    "simpleinout",  # Docs don't have a screenshot
     "slack_incoming",  # Docs don't have a screenshot
     "zapier",  # Docs don't have a screenshot
 }
