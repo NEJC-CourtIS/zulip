@@ -5,7 +5,14 @@
 {% endblock %}
 
 {% block content %}
+
+<p>{{ _("Hi there,") }}</p>
+
 <p>
+    Court Information Systems and the Northeastern Judicial Circuit want you to join them on Zulip &mdash; the team communication tool designed for productivity.{% endtrans %}
+</p>
+<p>
+<<<<<<< HEAD
     {% if create_realm %}
     {{ _('You have requested a new Zulip organization. Awesome!') }}
     {% else %}
@@ -19,7 +26,15 @@
     {{ _('Click the button below to complete registration.') }}
     {% endif %}
     <a class="button" href="{{ activate_url }}">{{ _('Complete registration') }}</a>
+=======
+    {{ _("To get started, click the button below.") }}
+    <a class="button" href="{{ activate_url }}">{{ _("Complete registration") }}</a>
 </p>
+<p>
+    {% trans support_email=macros.email_tag(support_email) %}Contact us any time at {{ support_email }} if you run into trouble, have any feedback, or just want to chat!{% endtrans %}
+>>>>>>> Changing confirm_registration email template to be less spammy.
+</p>
+<<<<<<< HEAD:templates/zerver/emails/confirm_registration.html
 <p>
     {% if corporate_enabled %}
         {{macros.contact_us_zulip_cloud(support_email)}}
@@ -27,4 +42,6 @@
         {{macros.contact_us_self_hosted(support_email)}}
     {% endif %}
 </p>
+=======
+>>>>>>> Changing confirm_registration email template to be less spammy.:templates/zerver/emails/confirm_registration.source.html
 {% endblock %}

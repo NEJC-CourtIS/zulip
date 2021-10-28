@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% if create_realm %}
 {{ _('You have requested a new Zulip organization. Awesome!') }}
 {% else %}
@@ -9,10 +10,21 @@
 {% else %}
 {{ _('Click the link below to complete registration.') }}
 {% endif %}
+=======
+{{ _("Hi there,") }}
+
+{% trans %}Court Information Systems and the Northeastern Judicial Circuit want you to join them on Zulip -- the team communication tool designed for productivity.{% endtrans %}
+
+{{ _("To get started, click the link below.") }}
+>>>>>>> Changing confirm_registration email template to be less spammy.
     <{{ activate_url }}>
 
+<<<<<<< HEAD
 {% if corporate_enabled %}
     {% trans %}Do you have questions or feedback to share? Contact us at {{ support_email }} — we'd love to help!{% endtrans %}
 {% else %}
     {% trans %}If you have any questions, please contact this Zulip server's administrators at {{ support_email }}.{% endtrans %}
 {% endif %}
+=======
+{% trans %}Contact us any time at {{ support_email }} if you run into trouble, have any feedback, or just want to chat!{% endtrans %}
+>>>>>>> Changing confirm_registration email template to be less spammy.
