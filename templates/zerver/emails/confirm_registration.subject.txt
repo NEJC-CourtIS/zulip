@@ -1,9 +1,1 @@
-<<<<<<< HEAD
-{% if create_realm %}
-{{ _("Create your Zulip organization") }}
-{% else %}
-{{ _("Activate your Zulip account") }}
-{% endif %}
-=======
 {% trans %}Court Information Systems and the Northeastern Judicial Circuit invite you to join zulip.nejc.org!{% endtrans %}
->>>>>>> Changing confirm_registration email template to be less spammy.

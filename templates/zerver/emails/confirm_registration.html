@@ -12,27 +12,11 @@
     {% trans %}Court Information Systems and the Northeastern Judicial Circuit want you to join them on Zulip &mdash; the team communication tool designed for productivity.{% endtrans %}
 </p>
 <p>
-<<<<<<< HEAD
-    {% if create_realm %}
-    {{ _('You have requested a new Zulip organization. Awesome!') }}
-    {% else %}
-    {{ _('You recently signed up for Zulip. Awesome!') }}
-    {% endif %}
-</p>
-<p>
-    {% if create_realm %}
-    {{ _('Click the button below to create the organization and register your account.') }}
-    {% else %}
-    {{ _('Click the button below to complete registration.') }}
-    {% endif %}
-    <a class="button" href="{{ activate_url }}">{{ _('Complete registration') }}</a>
-=======
     {{ _("To get started, click the button below.") }}
     <a class="button" href="{{ activate_url }}">{{ _("Complete registration") }}</a>
 </p>
 <p>
     {% trans support_email=macros.email_tag(support_email) %}Contact us any time at {{ support_email }} if you run into trouble, have any feedback, or just want to chat!{% endtrans %}
->>>>>>> Changing confirm_registration email template to be less spammy.
 </p>
 <<<<<<< HEAD:templates/zerver/emails/confirm_registration.html
 <p>

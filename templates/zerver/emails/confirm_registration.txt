@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 {% if create_realm %}
 {{ _('You have requested a new Zulip organization. Awesome!') }}
 {% else %}
@@ -11,12 +12,13 @@
 {{ _('Click the link below to complete registration.') }}
 {% endif %}
 =======
+=======
+>>>>>>> Merging changes from 5.0
 {{ _("Hi there,") }}
 
 {% trans %}Court Information Systems and the Northeastern Judicial Circuit want you to join them on Zulip -- the team communication tool designed for productivity.{% endtrans %}
 
 {{ _("To get started, click the link below.") }}
->>>>>>> Changing confirm_registration email template to be less spammy.
     <{{ activate_url }}>
 
 <<<<<<< HEAD
