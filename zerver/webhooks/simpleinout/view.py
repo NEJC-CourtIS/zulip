@@ -10,6 +10,7 @@ from zerver.decorator import webhook_view
 from zerver.lib.exceptions import InvalidJSONError
 from zerver.lib.request import REQ, has_request_variables
 from zerver.lib.response import json_success
+from zerver.lib.validator import check_dict
 from zerver.lib.webhooks.common import check_send_webhook_message
 from zerver.models import UserProfile
 
@@ -20,7 +21,7 @@ def api_simpleinout_webhook(
     request: HttpRequest,
     user_profile: UserProfile,
     user_specified_topic: Optional[str] = REQ("topic", default=None),
-    payload: Optional[Dict[str, Any]] = REQ("payload", converter=orjson.loads, default=None),
+    payload: Optional[Dict[str, Any]] = REQ("payload", json_validator=check_dict(), default=None),
 ) -> HttpResponse:
 
     # Slack accepts webhook payloads as payload="encoded json" as
@@ -53,7 +54,7 @@ def api_simpleinout_webhook(
         for attachment in payload["attachments"]:
             body = add_attachment(attachment, body)
 
-    if body == "" and "text" in payload:
+    if body == "" and "text" in payload and payload["text"] is not None:
         body += payload["text"]
         if "icon_emoji" in payload and payload["icon_emoji"] is not None:
             body = "{} {}".format(payload["icon_emoji"], body)
@@ -61,7 +62,7 @@ def api_simpleinout_webhook(
     if body != "":
         body = replace_formatting(replace_links(body).strip())
         check_send_webhook_message(request, user_profile, user_specified_topic, body)
-    return json_success()
+    return json_success(request)
 
 
 def add_block(block: Dict[str, Any], body: str) -> str:
@@ -102,5 +103,5 @@ def replace_formatting(text: str) -> str:
     text = re.sub(r"([^\w])\*(?!\s+)([^\*^\n]+)(?<!\s)\*([^\w])", r"\1**\2**\3", text)
 
     # Slack uses _text_ for emphasis, whereas Zulip interprets that as nothing
-    text = re.sub(r"([^\w])[_](?!\s+)([^\_\^\n]+)(?<!\s)[_]([^\w])", r"\1**\2**\3", text)
+    text = re.sub(r"([^\w])[_](?!\s+)([^\_\^\n]+)(?<!\s)[_]([^\w])", r"\1*\2*\3", text)
     return text
